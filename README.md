@@ -1,3 +1,5 @@
+Website link: https://mf02511.github.io/Median-Earnings-by-College-Major/
+
 # create-svelte
 
 ## Generate static site using svelte SSG

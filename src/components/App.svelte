@@ -5,29 +5,17 @@ import { onMount } from 'svelte';
 let data = [];
 
 onMount(async () => {
-    const res = await fetch(
-      'https://raw.githubusercontent.com/mf02511/Median-Earnings-by-College-Major/main/src/components/major_earnings.csv',
-    );
+    const res = await fetch('major_earnings.csv');
     const csv = await res.text();
-    await d3.csvParse(csv, (d, i, columns) => {
-        let row = {}
-        for (let j = 0; j < 27; j++) {
-            row[columns[j]] = d[columns[j]]
-        }
-        data.push(row)
-    });
-    data=data;
+    data = d3.csvParse(csv, d3.autoType);
 });
-
-$: console.log(data);
-
-
 </script>
+
 
 <main>
     <h1>Median Earnings by College Majors</h1>
-    <p></p>
 </main>
+
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;600;700;800&display=swap');

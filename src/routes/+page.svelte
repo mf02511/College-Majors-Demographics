@@ -1,5 +1,4 @@
 <script>
-<<<<<<< HEAD
   import App from '../components/App.svelte';
 </script>
 

@@ -5,10 +5,11 @@ import { onMount } from 'svelte';
 let data = [];
 
 onMount(async () => {
-    const res = await fetch('major_earnings.csv');
+    const res = await fetch('gender.csv');
     const csv = await res.text();
     data = d3.csvParse(csv, d3.autoType);
 });
+$: console.log(data)
 </script>
 
 

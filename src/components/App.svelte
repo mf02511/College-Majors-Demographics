@@ -21,12 +21,15 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;600;700;800&display=swap');
-
     *,
     *::before,
     *::after {
         margin: 0;
         padding: 0;
+    }
+    :global(body){
+        margin: 0;
+
     }
     main {
         text-align: center;
@@ -36,8 +39,13 @@
     }
 
     h1 {
-        font-size: 30px;
+        font-size: 50px;
         font-weight: 800;
+    }
+    GenderDist {
+        margin: 0;
+        padding: 0;
+        border: 0;
     }
 
 </style>

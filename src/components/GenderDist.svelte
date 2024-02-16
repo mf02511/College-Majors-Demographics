@@ -4,11 +4,11 @@
 	export let genderData;
 
 	const width = 1300;
-	const height = 1400;
+	const height = 1200;
 	const marginTop = 20;
 	const marginRight = 40;
-	const marginBottom = 30;
-	const marginLeft = 90;
+	const marginBottom = 100;
+	const marginLeft = 110;
 
 	let gx;
 	let gy;
@@ -24,7 +24,7 @@
 	$: y = d3
 		.scaleBand()
 		.range([0, height - marginBottom])
-		.domain(genderData.map(function(d) {return d.Degree;}))
+		.domain(genderData.map(function(d) {return d.Degree_Abv;}))
 		.padding(1);
 	$: x = d3
 		.scaleLinear()
@@ -48,8 +48,39 @@
 		viewBox="0 0 {width} {height}"
 		style="max-width: 100%; height: auto;"
 	>
-		<g bind:this={gy} transform="translate({marginLeft}, 0)"/>
-		<g bind:this={gx} transform="translate({marginLeft}, {height - marginBottom})"/>
+		<g
+			bind:this={gy} 
+			transform="translate({marginLeft}, 0)"
+			class='y-axis'
+		>
+			<text
+				x=-{marginLeft - 30}
+				y={marginTop - 10}
+				dy="0.32em"
+				fill="#000"
+				font-weight=800
+				font-size=20
+				text-anchor="start"
+			>
+				Major
+			</text>
+		</g>
+		<g 
+			bind:this={gx} 
+			transform="translate({marginLeft}, {height - marginBottom})"
+			class='x-axis'
+		>
+			<text
+				x={(width / 2) - marginLeft}
+				y={marginBottom/2 + 20}
+				fill="#000"
+				font-weight=800
+				font-size=20
+				text-anchor="start"
+			>
+				Number of People
+			</text>
+		</g>
 		<g 
 		class='bar'
 		>
@@ -57,7 +88,7 @@
 				{#each genders as d, i}
 					<rect
 						x={x(d[0]) + marginLeft}
-						y={y(d.data.Degree) - 15}
+						y={y(d.data.Degree_Abv) - 15}
 						width={x(d[1] - d[0])}
 						height={30}
 						fill={color(genders.key)}
@@ -114,5 +145,17 @@
 		position: absolute;
 		text-align: left;
 		padding: 10px;
+	}
+
+	.y-axis {
+		font: 12px sans-serif;
+		font-family: "Assistant", sans-serif;
+		font-weight: 600;
+	}
+
+	.x-axis {
+		font: 14px sans-serif;
+		font-family: "Assistant", sans-serif;
+		font-weight: 600;
 	}
 </style>

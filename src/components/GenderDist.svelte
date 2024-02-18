@@ -37,7 +37,7 @@
 		(genderData);
 	$: color = d3.scaleOrdinal()
 		.domain(subgroups)
-		.range(['#7faaf0', '#f0a1c7'])
+		.range(['#7685c0', '#da7454'])
 
 </script>
 

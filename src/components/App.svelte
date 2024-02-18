@@ -28,12 +28,29 @@
         const csvAge = await resAge.text();
         ageData = d3.csvParse(csvAge, d3.autoType);
     });
+
+    $: display = 0;
+
 </script>
 
 
 <main>
-    <h1>Median Earnings by College Majors</h1>
-    <RaceDist {raceData} />
+    <button on:click={(event) => {display = 0;}}>Gender</button>
+    <button on:click={(event) => {display = 1;}}>Race</button>
+    <button on:click={(event) => {display = 2;}}>Age</button>
+
+
+    {#if display == 0}
+        <h1>College Majors by Gender</h1>
+        <GenderDist {genderData}/>
+    {:else if display == 1}
+        <h1>College Majors by Race</h1>
+        <RaceDist {raceData}/>
+    {:else}
+        <h1>College Majors by Age</h1>
+        <AgeDist {ageData}/>
+    {/if}
+
 </main>
 
 
@@ -64,6 +81,10 @@
         margin: 0;
         padding: 0;
         border: 0;
+    }
+
+    .button {
+        color: 'white';
     }
 
 </style>

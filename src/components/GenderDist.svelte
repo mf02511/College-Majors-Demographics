@@ -106,6 +106,43 @@
 			{/each}
 		</g>
 
+		<g class='legend-box'>
+			<rect
+				x=1170
+				y={marginTop - 20}
+				width=160
+				height=90
+				fill={'#e7e6eb'}
+				opacity=0.5
+			/>
+		</g>
+
+		<g class='legend-dots'>
+			{#each subgroups as key, i}
+				<rect
+					x=1180
+					y={marginTop + (i * 30)}
+					width=20
+					height=20
+					fill={color(key)}
+				/>
+			{/each}
+		</g>
+
+		<g class='legend-labels'>
+			{#each subgroups as key, i}
+				<text
+					x={1210}
+					y={marginTop + (i * 30) + 15}
+					width=20
+					height=20
+					font-weight=400
+				>
+					{key}
+				</text>
+			{/each}
+		</g>
+
 	</svg>
 
 	<div

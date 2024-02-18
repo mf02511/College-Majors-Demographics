@@ -105,7 +105,43 @@
 				{/each}
 			{/each}
 		</g>
-		<>
+
+		<g class='legend-box'>
+			<rect
+				x=1170
+				y={marginTop - 20}
+				width=160
+				height=160
+				fill={'#e7e6eb'}
+				opacity=0.5
+			/>
+		</g>
+
+		<g class='legend-dots'>
+			{#each subgroups as key, i}
+				<rect
+					x=1180
+					y={marginTop + (i * 30)}
+					width=20
+					height=20
+					fill={color(key)}
+				/>
+			{/each}
+		</g>
+
+		<g class='legend-labels'>
+			{#each subgroups as key, i}
+				<text
+					x={1210}
+					y={marginTop + (i * 30) + 15}
+					width=20
+					height=20
+					font-weight=400
+				>
+					{key}
+				</text>
+			{/each}
+		</g>
 
 	</svg>
 
@@ -116,13 +152,13 @@
 		{#if hovered !== -1}
 			<b>{ageData[hovered].Degree}</b>
 			<br>
-			number of 25-34: {ageData[hovered].25-34} ({(ageData[hovered].25-34 * 100.0 / ageData[hovered].Total).toFixed(1)}%)
+			number of 25-34: {ageData[hovered].25} ({(ageData[hovered].25 * 100.0 / ageData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 35-44: {ageData[hovered].35-44} ({(ageData[hovered].35-44 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of 35-44: {ageData[hovered].35} ({(ageData[hovered].35 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 45-54: {raceData[hovered].45-54} ({(raceData[hovered].45-54 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of 45-54: {raceData[hovered].45} ({(raceData[hovered].45 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 55-64: {raceData[hovered].55-64} ({(raceData[hovered].55-64 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of 55-64: {raceData[hovered].55} ({(raceData[hovered].55 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 		{/if}
 	</div>
 	

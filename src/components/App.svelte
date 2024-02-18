@@ -3,6 +3,7 @@
     import { onMount } from 'svelte';
     import GenderDist from './GenderDist.svelte';
     import RaceDist from './RaceDist.svelte';
+    import AgeDist from './AgeDist.svelte';
 
     let genderData = [];
 
@@ -18,6 +19,14 @@
         const resRace = await fetch('race.csv');
         const csvRace = await resRace.text();
         raceData = d3.csvParse(csvRace, d3.autoType);
+    });
+
+    let ageData = [];
+
+    onMount(async () => {
+        const resAge = await fetch('age.csv');
+        const csvAge = await resAge.text();
+        ageData = d3.csvParse(csvAge, d3.autoType);
     });
 </script>
 

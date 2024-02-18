@@ -3,12 +3,12 @@
 
 	export let raceData;
 
-	const width = 1300;
+	const width = 1400;
 	const height = 1200;
-	const marginTop = 20;
+	const marginTop = 40;
 	const marginRight = 40;
 	const marginBottom = 100;
-	const marginLeft = 110;
+	const marginLeft = 140;
 
 	let gx;
 	let gy;
@@ -23,12 +23,12 @@
 
 	$: y = d3
 		.scaleBand()
-		.range([0, height - marginBottom])
+		.range([marginTop, height - marginBottom])
 		.domain(raceData.map(function(d) {return d.Degree_Abv;}))
 		.padding(1);
 	$: x = d3
 		.scaleLinear()
-		.range([0, width - marginRight])
+		.range([0, width - marginRight - marginLeft])
 		.domain([0, 3839000]);
 	$: d3.select(gy).call(d3.axisLeft(y));
 	$: d3.select(gx).call(d3.axisBottom(x));
@@ -54,12 +54,12 @@
 			class='y-axis'
 		>
 			<text
-				x=-{marginLeft - 30}
+				x=-{marginLeft - 40}
 				y={marginTop - 10}
 				dy="0.32em"
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Major
@@ -74,8 +74,8 @@
 				x={(width / 2) - marginLeft}
 				y={marginBottom/2 + 20}
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Number of People
@@ -136,7 +136,8 @@
 					y={marginTop + (i * 30) + 15}
 					width=20
 					height=20
-					font-weight=400
+					font-weight=600
+					font-size=20px
 				>
 					{key}
 				</text>
@@ -152,17 +153,17 @@
 		style="left: {recorded_mouse_position.x + 20}px; top: {recorded_mouse_position.y + 20}px"	
 	>
 		{#if hovered !== -1}
-			<b>{raceData[hovered].Degree}</b>
+			<u><b>{raceData[hovered].Degree}</b></u>
 			<br>
-			number of asians: {raceData[hovered].Asian} ({(raceData[hovered].Asian * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			Asians: {raceData[hovered].Asian} ({(raceData[hovered].Asian * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of blacks: {raceData[hovered].Black} ({(raceData[hovered].Black * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			Blacks: {raceData[hovered].Black} ({(raceData[hovered].Black * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of hispanics: {raceData[hovered].Hispanic} ({(raceData[hovered].Hispanic * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			Hispanics: {raceData[hovered].Hispanic} ({(raceData[hovered].Hispanic * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of whites: {raceData[hovered].White} ({(raceData[hovered].White * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			Whites: {raceData[hovered].White} ({(raceData[hovered].White * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			other or multiple: {raceData[hovered].Other} ({(raceData[hovered].Other * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			Other or multiple: {raceData[hovered].Other} ({(raceData[hovered].Other * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 		{/if}
 	</div>
 	
@@ -183,7 +184,7 @@
 		visibility: visible;
 		background-color: #e7e6eb;
 		border-radius: 5px;
-		width: 400px;
+		width: 300px;
 		color: black;
 		position: absolute;
 		text-align: left;
@@ -191,7 +192,7 @@
 	}
 
 	.y-axis {
-		font: 12px sans-serif;
+		font: 16px sans-serif;
 		font-family: "Assistant", sans-serif;
 		font-weight: 600;
 	}

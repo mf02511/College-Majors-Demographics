@@ -29,25 +29,37 @@
         ageData = d3.csvParse(csvAge, d3.autoType);
     });
 
-    $: display = 0;
+    let display = 0;
 
 </script>
 
 
 <main>
-    <button on:click={(event) => {display = 0;}}>Gender</button>
-    <button on:click={(event) => {display = 1;}}>Race</button>
-    <button on:click={(event) => {display = 2;}}>Age</button>
-
+    <h1>U.S. College Majors by Demographic (2022)</h1>
+    <button 
+        on:click={(event) => {display = 0;}} 
+        class="button"
+    >
+         Gender 
+    </button>
+    <button 
+        on:click={(event) => {display = 1;}} 
+        class="button"
+    >
+         Race 
+    </button>
+    <button 
+        on:click={(event) => {display = 2;}} 
+        class="button"
+    >
+        Age
+    </button>
 
     {#if display == 0}
-        <h1>College Majors by Gender</h1>
         <GenderDist {genderData}/>
     {:else if display == 1}
-        <h1>College Majors by Race</h1>
         <RaceDist {raceData}/>
     {:else}
-        <h1>College Majors by Age</h1>
         <AgeDist {ageData}/>
     {/if}
 
@@ -61,9 +73,16 @@
     *::after {
         margin: 0;
         padding: 0;
+        border: 0;
     }
+
     :global(body){
         margin: 0;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden; 
 
     }
     main {
@@ -71,20 +90,36 @@
         font-family: 'Assistant', sans-serif;
         margin: 0;
         padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
     }
+
+    .button {
+        font-size: 24px;
+        font-family: 'Assistant', sans-serif;
+        background-color: #fce3bd;
+        border: 2px solid #ffb45e;
+        padding: 3px 10px;
+        margin: 4px 10px;
+        border-radius: 4px;
+    }
+    .button:hover{
+        font-weight: 600;
+    }
+    .button:focus{
+        font-weight: 600;
+        border: 2px solid #ffb45e;
+        background-color: #ffb45e;
+    }
+
 
     h1 {
         font-size: 50px;
         font-weight: 800;
-    }
-    GenderDist {
-        margin: 0;
-        padding: 0;
-        border: 0;
+        padding: 10px;
     }
 
-    .button {
-        color: 'white';
-    }
+    
 
 </style>

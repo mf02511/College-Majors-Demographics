@@ -115,13 +115,13 @@
 		{#if hovered !== -1}
 			<b>{raceData[hovered].Degree}</b>
 			<br>
-			number of asian: {raceData[hovered].Asian} ({(raceData[hovered].Asian * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of asians: {raceData[hovered].Asian} ({(raceData[hovered].Asian * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of black: {raceData[hovered].Black} ({(raceData[hovered].Black * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of blacks: {raceData[hovered].Black} ({(raceData[hovered].Black * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of hispanic: {raceData[hovered].Hispanic} ({(raceData[hovered].Hispanic * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of hispanics: {raceData[hovered].Hispanic} ({(raceData[hovered].Hispanic * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of white: {raceData[hovered].White} ({(raceData[hovered].White * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			number of whites: {raceData[hovered].White} ({(raceData[hovered].White * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
 			other or multiple: {raceData[hovered].Other} ({(raceData[hovered].Other * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 		{/if}

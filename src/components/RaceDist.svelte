@@ -113,7 +113,8 @@
 				width=160
 				height=180
 				fill={'#e7e6eb'}
-				opacity=0.5
+				rx=4px
+				ry=4px
 			/>
 		</g>
 
@@ -164,6 +165,9 @@
 			Whites: {raceData[hovered].White} ({(raceData[hovered].White * 100.0 / raceData[hovered].Total).toFixed(1)}%)
 			<br>
 			Other or multiple: {raceData[hovered].Other} ({(raceData[hovered].Other * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			<br>
+			_______________________________
+			total: {raceData[hovered].Total}
 		{/if}
 	</div>
 	

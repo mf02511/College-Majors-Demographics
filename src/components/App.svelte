@@ -35,7 +35,8 @@
 
 
 <main>
-    <h1>U.S. College Majors by Demographic (2022)</h1>
+    <h1>College Majors in the U.S. Workforce by Demographic (2022)</h1>
+    <h2>data source: <a href="https://www.census.gov/data/tables/2022/demo/educational-attainment/acs-detailed-tables.html">2022 ACS Detailed Field of Degree and Median Annual Earnings</a><h2>
     <button 
         on:click={(event) => {display = 0;}} 
         class="button"
@@ -117,9 +118,12 @@
     h1 {
         font-size: 50px;
         font-weight: 800;
-        padding: 10px;
+        margin: 10px;
     }
 
-    
-
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 10px;
+    }
 </style>

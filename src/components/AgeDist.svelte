@@ -116,7 +116,8 @@
 				width=180
 				height=160
 				fill={'#e7e6eb'}
-				opacity=0.5
+				rx=4px
+				ry=4px
 			/>
 		</g>
 
@@ -163,6 +164,9 @@
 			45-54 y/o: {ageData[hovered][45]} ({(ageData[hovered][45] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
 			<br>
 			55-64 y/o: {ageData[hovered][55]} ({(ageData[hovered][55] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
+			<br>
+			________________________
+			total: {ageData[hovered].Total}
 		{/if}
 	</div>
 	

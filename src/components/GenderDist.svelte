@@ -113,7 +113,8 @@
 				width=160
 				height=90
 				fill={'#e7e6eb'}
-				opacity=0.5
+				rx=4px
+				ry=4px
 			/>
 		</g>
 
@@ -158,6 +159,9 @@
 			<br>
 			females:  {genderData[hovered].Female} ({(genderData[hovered].Female * 100.0 / 
 			(genderData[hovered].Male + genderData[hovered].Female)).toFixed(1)}%)
+			<br>
+			________________________
+			total: {genderData[hovered].Male + genderData[hovered].Female}
 		{/if}
 	</div>
 	

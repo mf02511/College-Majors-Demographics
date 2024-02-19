@@ -1,60 +1,11 @@
-Website link: https://mf02511.github.io/Median-Earnings-by-College-Major/
+# College Majors in the U.S. Workforce by Demographic (2022)
 
-# create-svelte
+**View webpage here:** https://mf02511.github.io/Median-Earnings-by-College-Major/
 
-## Generate static site using svelte SSG
-
-To assist you in creating a static webpage for GitHub Pages using Svelte, we have developed a template for you: [ShaokangJiang/svelte-template (github.com)](https://github.com/ShaokangJiang/svelte-template).
-
-Please follow the link provided, and initiate the creation of a new repository.
-
-![image-20240210175403813](./assets/image-20240210175403813.png)
-
-After GitHub completes the cloning process, navigate to the settings page. On the left panel, under the "Pages" tab, locate the "Source" section and select "GitHub Actions" as the source. 
-
-Clone this repository and proceed with your work. Upon completion, commit and push your changes. The corresponding GitHub Actions will then execute, building a static website hosted at `https://your-username.github.io/your-repo-name` for you.
-
-![image-20240210175104365](./assets/image-20240210175104365.png)
-
-### Migrate from your project
-
-If you have started on the project and want to switch to using this template, you can copy your `src` folder, go to the local clone of your version of this template, then paste it. When it says the file exists, simply click replace, and you can continue working on your version of this template.
+We chose a horizontal bar plot to display the distribution of college majors since the data is categorical. We decided to use a horizontal bar as the marker, as opposed to a vertical bar, since we wanted to be able to see the entire bar for each major without having to scroll, while also maximizing the space on the page. Also, using a horizontal bar chart allows us to avoid implying any chronological or ordinal trend within the college major categories. In addition, we used stacked bars to visualize the distribution of groups within each demographic. Other options we considered include: paired/side-by-side bars and overlaid bars. However, since the number of people in each major is a sum of the number of people in each subgroup, it was appropriate to use a stacked bar plot. We used discrete color palettes for gender and race breakdown since they are nominal variables. Since age group is an ordinal variable, we used a continuous color scale. We kept certain colors (the red and blue colors in the gender plot) the same between each display in order to keep a sense of cohesiveness but not overtly to imply any connections between the different demographic subgroups. The colors were also chosen intentionally: red and blue for gender, and random colors that are not directly associated with skin colors for race. A legend was added to each plot to show which color corresponds to which subgroup.
 
 
+We originally wanted to include both median salary information and the distribution of the number of people within each subgroup of a demographic for each major from the dataset. However, we decided to narrow down the scope of the visualization and focus only on the breakdown of people within each subgroup of demographics. For the interaction, we focused on the demographics of gender, race, and age, creating interactive buttons to switch between the different demographics. The boldness of the buttons change when being hovered over and the background color of the button changes when selected, which effectively indicates which demographic the viewer is looking at. Originally, we wanted to implement transitions between when clicking the demographic buttons, however, we felt that doing so would possibly mislead the viewer into thinking that certain subgroups between demographics were related in any way. In addition to the buttons, we also included tooltips when hovering over each bar. The tooltip allows us to show the major names as well as the explicit numerical breakdowns of each subgroup along with the percentages. Since there are a large number of college majors, the viewer must scroll vertically in order to view all the majors and the x-axis; the tooltip compensates for this by directly showing both the category and the value in a single place. We also changed the color of the bars when being hovered over, which makes it easier to see which bar is selected. 
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-## Creating a project 
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Our development process was split equally between each member and we worked synchronously throughout the project. Over the course of a week and a half, we spent a total of 20 hours developing the webpage. The first obstacle was loading the data using d3; we were unsure of the correct syntax to use in order to read in our csv files. Secondly, it took us a while to become familiar with the different methods of d3 that we needed to create our visualization. Namely, it was slightly tricky for us to figure out how to create stacked bars using nested for loops, and we ended up spending a significant amount of time on this aspect. Another aspect that was very time consuming was figuring out the coordinates and margin/padding values when positioning the plot on the webpage.

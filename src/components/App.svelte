@@ -116,7 +116,7 @@
 
 
     h1 {
-        font-size: 50px;
+        font-size: 35px;
         font-weight: 800;
         margin: 10px;
     }

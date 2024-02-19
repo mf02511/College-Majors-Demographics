@@ -3,12 +3,12 @@
 
 	export let ageData;
 
-	const width = 1300;
+	const width = 1400;
 	const height = 1200;
-	const marginTop = 20;
+	const marginTop = 40;
 	const marginRight = 40;
 	const marginBottom = 100;
-	const marginLeft = 110;
+	const marginLeft = 140;
 
 	let gx;
 	let gy;
@@ -19,16 +19,19 @@
 	};
 
 
-	const subgroups = ['25-34', '35-44', '45-54', '55-64'];
+	const subgroups = ['25', '35', '45', '55'];
+	const labels = ['25-34 years old', '35-44 years old', '45-54 years old', 
+			'55-64 years old'
+			]
 
 	$: y = d3
 		.scaleBand()
-		.range([0, height - marginBottom])
+		.range([marginTop, height - marginBottom])
 		.domain(ageData.map(function(d) {return d.Degree_Abv;}))
 		.padding(1);
 	$: x = d3
 		.scaleLinear()
-		.range([0, width - marginRight])
+		.range([0, width - marginRight - marginLeft])
 		.domain([0, 3839000]);
 	$: d3.select(gy).call(d3.axisLeft(y));
 	$: d3.select(gx).call(d3.axisBottom(x));
@@ -37,7 +40,7 @@
 		(ageData);
 	$: color = d3.scaleOrdinal()
 		.domain(subgroups)
-		.range(['#c6ccdc', '#8d99ba', '#7a88af', '#42558d'])
+		.range(['#95a0c9', '#7685c0', '#4d61b0', '#3349a3'])
 
 </script>
 
@@ -54,12 +57,12 @@
 			class='y-axis'
 		>
 			<text
-				x=-{marginLeft - 30}
+				x=-{marginLeft - 40}
 				y={marginTop - 10}
 				dy="0.32em"
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Major
@@ -74,8 +77,8 @@
 				x={(width / 2) - marginLeft}
 				y={marginBottom/2 + 20}
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Number of People
@@ -105,7 +108,45 @@
 				{/each}
 			{/each}
 		</g>
-		<>
+
+		<g class='legend-box'>
+			<rect
+				x=1150
+				y={marginTop - 20}
+				width=180
+				height=160
+				fill={'#e7e6eb'}
+				rx=4px
+				ry=4px
+			/>
+		</g>
+
+		<g class='legend-dots'>
+			{#each subgroups as key, i}
+				<rect
+					x=1160
+					y={marginTop + (i * 30)}
+					width=20
+					height=20
+					fill={color(key)}
+				/>
+			{/each}
+		</g>
+
+		<g class='legend-labels'>
+			{#each labels as key, i}
+				<text
+					x={1190}
+					y={marginTop + (i * 30) + 15}
+					width=20
+					height=20
+					font-weight=600
+					font-size=20px
+				>
+					{key}
+				</text>
+			{/each}
+		</g>
 
 	</svg>
 
@@ -114,15 +155,18 @@
 		style="left: {recorded_mouse_position.x + 20}px; top: {recorded_mouse_position.y + 20}px"	
 	>
 		{#if hovered !== -1}
-			<b>{ageData[hovered].Degree}</b>
+			<u><b>{ageData[hovered].Degree}</b></u>
 			<br>
-			number of 25-34: {ageData[hovered].25-34} ({(ageData[hovered].25-34 * 100.0 / ageData[hovered].Total).toFixed(1)}%)
+			25-34 y/o: {ageData[hovered][25]} ({(ageData[hovered][25] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 35-44: {ageData[hovered].35-44} ({(ageData[hovered].35-44 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			35-44 y/o: {ageData[hovered][35]} ({(ageData[hovered][35] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 45-54: {raceData[hovered].45-54} ({(raceData[hovered].45-54 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			45-54 y/o: {ageData[hovered][45]} ({(ageData[hovered][45] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
 			<br>
-			number of 55-64: {raceData[hovered].55-64} ({(raceData[hovered].55-64 * 100.0 / raceData[hovered].Total).toFixed(1)}%)
+			55-64 y/o: {ageData[hovered][55]} ({(ageData[hovered][55] * 100.0 / ageData[hovered].Total).toFixed(1)}%)
+			<br>
+			________________________
+			total: {ageData[hovered].Total}
 		{/if}
 	</div>
 	
@@ -143,7 +187,7 @@
 		visibility: visible;
 		background-color: #e7e6eb;
 		border-radius: 5px;
-		width: 400px;
+		width: 220px;
 		color: 35-44;
 		position: absolute;
 		text-align: left;
@@ -151,7 +195,7 @@
 	}
 
 	.y-axis {
-		font: 12px sans-serif;
+		font: 16px sans-serif;
 		font-family: "Assistant", sans-serif;
 		font-weight: 600;
 	}

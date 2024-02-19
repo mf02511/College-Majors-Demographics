@@ -3,12 +3,12 @@
 
 	export let genderData;
 
-	const width = 1300;
+	const width = 1400;
 	const height = 1200;
-	const marginTop = 20;
+	const marginTop = 40;
 	const marginRight = 40;
 	const marginBottom = 100;
-	const marginLeft = 110;
+	const marginLeft = 140;
 
 	let gx;
 	let gy;
@@ -23,12 +23,12 @@
 
 	$: y = d3
 		.scaleBand()
-		.range([0, height - marginBottom])
+		.range([marginTop, height - marginBottom])
 		.domain(genderData.map(function(d) {return d.Degree_Abv;}))
 		.padding(1);
 	$: x = d3
 		.scaleLinear()
-		.range([0, width - marginRight])
+		.range([0, width - marginRight - marginLeft])
 		.domain([0, 3839000]);
 	$: d3.select(gy).call(d3.axisLeft(y));
 	$: d3.select(gx).call(d3.axisBottom(x));
@@ -37,7 +37,7 @@
 		(genderData);
 	$: color = d3.scaleOrdinal()
 		.domain(subgroups)
-		.range(['#7faaf0', '#f0a1c7'])
+		.range(['#7685c0', '#da7454'])
 
 </script>
 
@@ -54,12 +54,12 @@
 			class='y-axis'
 		>
 			<text
-				x=-{marginLeft - 30}
+				x=-{marginLeft - 40}
 				y={marginTop - 10}
 				dy="0.32em"
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Major
@@ -74,8 +74,8 @@
 				x={(width / 2) - marginLeft}
 				y={marginBottom/2 + 20}
 				fill="#000"
-				font-weight=800
-				font-size=20
+				font-weight=700
+				font-size=25px
 				text-anchor="start"
 			>
 				Number of People
@@ -106,6 +106,45 @@
 			{/each}
 		</g>
 
+		<g class='legend-box'>
+			<rect
+				x=1170
+				y={marginTop - 20}
+				width=160
+				height=90
+				fill={'#e7e6eb'}
+				rx=4px
+				ry=4px
+			/>
+		</g>
+
+		<g class='legend-dots'>
+			{#each subgroups as key, i}
+				<rect
+					x=1180
+					y={marginTop + (i * 30)}
+					width=20
+					height=20
+					fill={color(key)}
+				/>
+			{/each}
+		</g>
+
+		<g class='legend-labels'>
+			{#each subgroups as key, i}
+				<text
+					x={1210}
+					y={marginTop + (i * 30) + 15}
+					width=20
+					height=20
+					font-weight=600
+					font-size=20px
+				>
+					{key}
+				</text>
+			{/each}
+		</g>
+
 	</svg>
 
 	<div
@@ -113,13 +152,16 @@
 		style="left: {recorded_mouse_position.x + 20}px; top: {recorded_mouse_position.y + 20}px"	
 	>
 		{#if hovered !== -1}
-			<b>{genderData[hovered].Degree}</b>
+			<u><b>{genderData[hovered].Degree}</b></u>
 			<br>
-			number of males: {genderData[hovered].Male} ({(genderData[hovered].Male * 100.0 / 
+			males:  {genderData[hovered].Male} ({(genderData[hovered].Male * 100.0 / 
 			(genderData[hovered].Male + genderData[hovered].Female)).toFixed(1)}%)
 			<br>
-			number of females: {genderData[hovered].Female} ({(genderData[hovered].Female * 100.0 / 
+			females:  {genderData[hovered].Female} ({(genderData[hovered].Female * 100.0 / 
 			(genderData[hovered].Male + genderData[hovered].Female)).toFixed(1)}%)
+			<br>
+			________________________
+			total: {genderData[hovered].Male + genderData[hovered].Female}
 		{/if}
 	</div>
 	
@@ -140,7 +182,7 @@
 		visibility: visible;
 		background-color: #e7e6eb;
 		border-radius: 5px;
-		width: 300px;
+		width: 220px;
 		color: black;
 		position: absolute;
 		text-align: left;
@@ -148,7 +190,7 @@
 	}
 
 	.y-axis {
-		font: 12px sans-serif;
+		font: 16px sans-serif;
 		font-family: "Assistant", sans-serif;
 		font-weight: 600;
 	}

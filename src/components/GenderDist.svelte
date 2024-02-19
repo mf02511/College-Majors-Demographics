@@ -155,13 +155,13 @@
 			<u><b>{genderData[hovered].Degree}</b></u>
 			<br>
 			males:  {genderData[hovered].Male} ({(genderData[hovered].Male * 100.0 / 
-			(genderData[hovered].Male + genderData[hovered].Female)).toFixed(1)}%)
+			genderData[hovered].Total).toFixed(1)}%)
 			<br>
 			females:  {genderData[hovered].Female} ({(genderData[hovered].Female * 100.0 / 
-			(genderData[hovered].Male + genderData[hovered].Female)).toFixed(1)}%)
+			genderData[hovered].Total).toFixed(1)}%)
 			<br>
 			________________________
-			total: {genderData[hovered].Male + genderData[hovered].Female}
+			total: {genderData[hovered].Total}
 		{/if}
 	</div>
 	

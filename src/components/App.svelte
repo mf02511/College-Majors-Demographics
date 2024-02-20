@@ -36,7 +36,8 @@
 
 <main>
     <h1>College Majors in the U.S. Workforce by Demographic (2022)</h1>
-    <h2>data source: <a href="https://www.census.gov/data/tables/2022/demo/educational-attainment/acs-detailed-tables.html">2022 ACS Detailed Field of Degree and Median Annual Earnings</a><h2>
+    <h2><a href="https://github.com/mf02511/College-Majors-Demographics/blob/main/README.md">read more about this visualization</a><h2>
+    <h3>data source: <a href="https://www.census.gov/data/tables/2022/demo/educational-attainment/acs-detailed-tables.html">2022 ACS Detailed Field of Degree and Median Annual Earnings</a><h3>
     <button 
         on:click={(event) => {display = 0;}} 
         class="button"
@@ -120,9 +121,12 @@
         font-weight: 800;
         margin: 10px;
     }
-
     h2 {
         font-size: 18px;
+        font-weight: 400;
+    }
+    h3 {
+        font-size: 14px;
         font-weight: 400;
         margin: 10px;
     }
